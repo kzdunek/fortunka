@@ -37,7 +37,6 @@ end
 
 gem 'simple_form'
 gem 'omniauth', '~> 0.3.2'
-gem "oa-oauth", :require => "omniauth/oauth"
 gem 'responders'
 gem 'kaminari'
 gem 'therubyracer'

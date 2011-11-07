@@ -1,0 +1,23 @@
+<p>
+  <b>Author:</b>
+  <%= @fortune.source %>
+</p>
+
+<p>
+  <b>Phrase:</b>
+  <%= @fortune.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_fortune_path(@fortune) %> |
+<%= link_to 'Back', fortunes_path %>
+
+<% if @fortune.comments.any? %>
+  <h2>Comments</h2>
+ <%= render :partial => 'comments/comment', :collection => @fortune.comments %>
+<% end %>
+
+<h2>Add new comment</h2>
+<%= render :partial => 'comments/form' %>
+<% end %>
+<% end %>

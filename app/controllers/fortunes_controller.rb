@@ -10,6 +10,7 @@ end
   # GET /fortunes/1.xml
   def show
     @fortune = Fortune.find(params[:id])
+    @comment = Comment.new
     respond_with(@fortune)
   end
 

@@ -1,13 +1,29 @@
-<p>
-  <b>Author:</b>
-  <%= @fortune.source %>
-</p>
+<h1>Show fortune<h1/>
 
-<p>
-  <b>Phrase:</b>
-  <%= @fortune.body %>
-</p>
-
-
-<%= link_to 'Edit', edit_fortune_path(@fortune) %> |
-<%= link_to 'Back', fortunes_path %>
+<article class="single">
+  <div class="attribute">
+    <span class="name">Author</span>
+    <span class="value"><%= @fortune.source %></span>
+  </div>
+  <div class="attribute">
+    <span class="name">Phrase</span>
+    <span class="value"><%= @fortune.body %></span>
+  </div>
+  <div class="link">
+    <%= link_to 'Edit', edit_fortune_path(@fortune) %> |
+    <%= link_to 'Back', fortunes_path %>
+<br/><br/><br/>
+  </div>
+<div>
+<h2>Add new comment</h2>
+<%= render :partial => 'comments/form' %>
+<p>   </p>
+<br/><br/><br/><br/><br/><br/>
+</div>
+<div>
+<% if @fortune.comments.any? %>
+  <h2>Comments</h2>
+  <%= render :partial => 'comments/comment', :collection => @fortune.comments %>
+<% end %>
+</div>
+</article>
