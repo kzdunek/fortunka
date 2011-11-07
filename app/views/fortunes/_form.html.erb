@@ -1,0 +1,12 @@
+<%= simple_form_for(@fortune) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :source, :label => "Author" %>
+    <%= f.input :body, :label => "Phrase" %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

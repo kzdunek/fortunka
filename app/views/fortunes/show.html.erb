@@ -1,0 +1,13 @@
+<p>
+  <b>Author:</b>
+  <%= @fortune.source %>
+</p>
+
+<p>
+  <b>Phrase:</b>
+  <%= @fortune.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_fortune_path(@fortune) %> |
+<%= link_to 'Back', fortunes_path %>

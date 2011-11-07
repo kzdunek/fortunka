@@ -1,0 +1,32 @@
+<h1>Listing fortunes</h1>
+
+<%= form_tag fortunes_path, :method => :get, :id => "fortunes_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<hr/>
+<table>
+  <tr>
+    <th>Author</th><th>Phrase</th><th></th><th></th><th></th>
+  </tr>
+  <% @fortunes.each do |fortune| %>
+   <tr>
+    <td><%= fortune.source %></td><td><%= fortune.body %></td>
+    <td><%= link_to 'Show', fortune %></td>
+    <td><%= link_to 'Edit', edit_fortune_path(fortune) %></td>
+    <td><%= link_to 'Destroy', fortune, confirm: 'Are you sure?', method: :Delete %></td>
+  </tr>
+<% end %>
+</table>
+
+    <th></th>
+  </tr>
+
+
+<br />
+
+<%= link_to 'New Fortune', new_fortune_path %>
+<%= paginate @fortunes %>
