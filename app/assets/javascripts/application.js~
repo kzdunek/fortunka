@@ -13,7 +13,7 @@
 	$('#content').html(xhr.responseText);
   
    });
- $('nav a').live('ajax:success',function(event,data, status, error){
+ $('#fortunes_search, nav a').live('ajax:success',function(event,data, status, error){
 	$('#content').html(data);
   
    });

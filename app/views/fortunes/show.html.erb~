@@ -2,10 +2,7 @@
 
 <article class="single">
 <div class="singlefortune">
-  <div class="links">
-    <%= link_to '✎', edit_fortune_path(@fortune) , :class => "edit"%>
-    <%= link_to '⤺', fortunes_path, :class => "back"%>
-  </div> 
+  
   <div class="attribute">
     <p class="fortune_body">
     <span class="value"><%= @fortune.body %></span>
@@ -14,7 +11,10 @@
     <p class="author">
     <span class="value"><%= @fortune.source %></span>
   </p></div>
- 
+  <div class="links">
+    <%= link_to '✎', edit_fortune_path(@fortune) , :class => "edit"%>
+    <%= link_to '⤺', fortunes_path, :class => "back"%>
+  </div>
 </div>
 <div>
 <h2>Add new comment</h2>

@@ -1,0 +1,20 @@
+class Fortune < ActiveRecord::Base
+
+has_many :comments, :dependent => :destroy
+
+def self.search(search)
+  if search
+    where('body LIKE ?', "%#{search}%")
+  else
+    scoped
+  end  
+end
+
+def self.search2(search2)
+  if search2
+    where('source LIKE ?', "%#{search2}%")
+  else
+    scoped
+  end  
+end
+end

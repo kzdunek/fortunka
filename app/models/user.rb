@@ -7,6 +7,5 @@ def self.create_with_omniauth(auth)
     user.name = auth["user_info"]["name"]
   end
 end
-
-
 end
+

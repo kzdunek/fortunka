@@ -1,0 +1,15 @@
+<div class="choose">
+<h3>Choose your favourite author to see the fortunes!</h3>
+<ul id ="favourites">
+<li><%= image_tag("woody.jpg", :class=>"woody") %></br><a href="/search2?source=Woody+Allen">Woody Allen</a></li>
+<li><%= image_tag("einstein.gif", :class=>"einstein") %></br><a href="/fortunes/search2?source=Albert+Einstein">Albert Einstein</a></li>
+</ul>
+
+<%= form_tag fortunes_path, :method => :get, :id => "fortunes_search2" do %>
+  
+    <span class="question">Find your favourite author's fortunes!</span>
+
+<% end %>
+</div>
+
+

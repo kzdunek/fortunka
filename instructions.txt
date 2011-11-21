@@ -1,0 +1,7 @@
+git clone git@github.com:kzdunek/fortunka.git
+git status
+git add -u
+git add -A
+git commmit
+git push
+rake db:migrate

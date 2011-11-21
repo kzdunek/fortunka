@@ -256,7 +256,7 @@ margin-left:15px;
 }
 .fb-like {
 	margin-left:300px;
-
+	margin-bottom:40px;
 }
 #twitter{
 	margin-left:740px;

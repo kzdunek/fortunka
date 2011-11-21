@@ -24,7 +24,7 @@
 <div id="paginator">
 <% if not request.xhr? %>
   <%= paginate @fortunes %>
-<% end %>
+<% end
 </div>
 <div id="adds" class="wrapper">
 		<aside>

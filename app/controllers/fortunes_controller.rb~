@@ -8,9 +8,7 @@ class FortunesController < ApplicationController
   end
   def index
   @fortunes = Fortune.search(params[:search]).order(:source).page(params[:page]).per(6)
-  respond_to do |format|
-    format.html
-  end
+  respond_with(@fortunes)
 end
 
   # GET /fortunes/1

@@ -1,17 +1,57 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
 <head>
-  <title>Fortunki</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <meta charset="utf-8">
 
+  <title><%= content_for?(:title) ? yield(:title) : "fortunka" %></title>
+  <meta name="phrase" content="">
+  <meta name="author" content="">
+
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>	
+</head>
+
+<body>
+  <header>
+<!--   <a href="/"> <%= content_tag :h1, "Fortunki Rails" %></a> -->
+
+<% if Fortune.count>0 %>
+ <% ran=1 %>
+ <% random = Fortune.first(:offset => rand(Fortune.count)) %>
+<% else %>
+ <% ran=0 %>
+<% end %>
+
+<div class="random">
+
+<% if ran==1 %>
+ <a href="/fortunes/<%= random.id %>">Random</a>
+<% end %>
+
+</div>
+
+<div id="twitter">
+
+<% if current_user %>
+  Welcome <%= current_user.name %>!
+  <%= link_to "Sign Out", signout_path %>
+<% else %>
+  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+<% end %>
+
+</div>
+
+  </header>
+  <div role="main">
 <%= yield %>
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "#{name}" %>
 <% end %>
+
+
+  </div>
+  <footer>
+  </footer>
+
 
 </body>
 </html>

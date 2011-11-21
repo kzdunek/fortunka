@@ -1,18 +1,41 @@
+
 <!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title><%= content_for?(:title) ? yield(:title) : "fortunka" %></title>
-  <meta name="phrase" content="">
-  <meta name="author" content="">
+	<title><%= content_for?(:title) ? yield(:title) : "Fortunes" %></title>
+	<meta name="description" content="">
+	<meta name="author" content="kzdunek">
 
-  <%= stylesheet_link_tag "application" %>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 
+	<link rel="stylesheet" href="css/style.css">
+	
+	<script src="js/libs/modernizr-2.0.min.js"></script>
+	<script src="js/libs/respond.min.js"></script>
+
+ <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
 </head>
 
 <body>
-  <header>
-    <a href="/"> <%= content_tag :h1, "Fortunki Rails" %></a>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  	<div id="header-container">
+		<header class="wrapper">
+<%= image_tag("koniczynka.png", :class=>"koniczynka") %><a href="/"><h1 id="title">Fortunes</h1></a>
 
 <% if Fortune.count>0 %>
  <% ran=1 %>
@@ -21,13 +44,21 @@
  <% ran=0 %>
 <% end %>
 
-<div class="random">
 
-<% if ran==1 %>
- <a href="/fortunes/<%= random.id %>">Random</a>
-<% end %>
-
+<nav>
+				<ul>
+					<li><% if ran==1 %><a href="/fortunes/<%= random.id %>" data-remote="true">Random</a><% end %></li>
+					<li><%= link_to 'Add Fortune', new_fortune_path, :remote => true %></li>
+					<li><a href="../fortunes/advanced_search" data-remote="true">Advanced Search</a></li>
+				</ul>
+			</nav>
+		</header>
+  </div>
+<div id ="search-div">
+<%= render :partial => 'searchForm' %>
 </div>
+
+<div id="fb-like" data-href="sigma.inf.ug.edu.pl:3030" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 
 <div id="twitter">
 
@@ -35,25 +66,39 @@
   Welcome <%= current_user.name %>!
   <%= link_to "Sign Out", signout_path %>
 <% else %>
-  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+  <%= link_to image_tag("twitter_logo.png"), "/auth/twitter" %>
 <% end %>
 
 </div>
-<div id="facebook">
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-</div>
-  </header>
-  <div role="main">
+<hr/>
+
+  <div role="main" id="content">
 <%= yield %>
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "#{name}" %>
 <% end %>
+</div>
+	<div id="footer-container">
+		<footer class="wrapper">
+			<h3>A nice footer</h3>
+		</footer>
+	</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
+<script src="js/script.js"></script>
+<script>
+	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
 
-  </div>
-  <footer>
-  </footer>
+<!--[if lt IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
 
-
+</div>
 </body>
 </html>

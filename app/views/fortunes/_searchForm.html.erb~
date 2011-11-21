@@ -1,0 +1,8 @@
+<%= form_tag fortunes_path, :method => :get, :remote => true, :id => "fortunes_search" do %>
+  
+    <span class="question">Find your favourite fortune!</span>
+<div class="sForm">
+    <%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search", :name => nil %>
+</div>
+<% end %>

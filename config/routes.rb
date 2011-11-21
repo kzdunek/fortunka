@@ -1,7 +1,11 @@
 Fortunki::Application.routes.draw do
 
 
-  resources :fortunes do resources :comments end 
+  resources :fortunes do 
+	resources :comments 
+	get 'advanced_search', :on => :collection
+	get 'search2', :on => :collection  
+end 
 
 
 match "/auth/:provider/callback" => "sessions#create"

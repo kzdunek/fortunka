@@ -2,7 +2,7 @@
 
 <%= render 'form' %>
 
-<div class="leftlinks">
+<div class="links">
     <%= link_to '☞', @fortune, :class => "show"%>
     <%= link_to '⤺', fortunes_path, :class => "back"%>
   </div>
